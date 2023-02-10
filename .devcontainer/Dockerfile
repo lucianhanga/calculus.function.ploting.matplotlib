@@ -1,8 +1,10 @@
 FROM ubuntu:latest
-RUN apt-get update && apt-get -y upgrade
+RUN apt-get update
+RUN apt-get -y upgrade
 
 # install the python3 and co.
-RUN apt-get install python3 python3-pip python3-dev -y
+RUN apt-get install python3 -y
+RUN apt-get install python3-pip -y
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 10
 
 # add the sudo
@@ -11,6 +13,9 @@ RUN apt-get install sudo -y
 # install the Jupiter
 RUN pip3 install --upgrade pip
 RUN pip3 install jupyter
+
+# install the git
+RUN apt-get install git -y
 
 #
 # install the data science tools and libraries
@@ -29,6 +34,8 @@ RUN pip3 install matplotlib
 RUN pip3 install openpyxl
 # install sympy - needed for the symbolic manipulation - web: https://www.sympy.org/en/index.html
 RUN pip3 install sympy
+# ipympl - needed for the interactive ploting - web: 
+RUN pip3 install ipympl
 
 # change the root password
 RUN echo 'root:toor' | chpasswd

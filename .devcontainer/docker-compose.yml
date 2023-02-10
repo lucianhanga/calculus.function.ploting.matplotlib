@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  plotting.app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ../..:/home/devlh/workspaces:cached
+    command: sleep infinity

@@ -1,0 +1,9 @@
+{%- extends 'full.tpl' -%}
+
+{% block input_group %}
+
+  {% if cell.metadata.input_collapsed == false  %}
+     ((( super() ))) 
+  {% endif %}
+
+{% endblock %}

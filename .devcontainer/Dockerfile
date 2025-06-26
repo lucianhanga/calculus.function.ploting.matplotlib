@@ -27,7 +27,15 @@ RUN python -m venv ~/.venv && \
     ~/.venv/bin/pip install --upgrade pip && \
     ~/.venv/bin/pip install \
         jupyter pandas scipy seaborn numpy matplotlib \
-        openpyxl sympy ipympl ipykernel
+        openpyxl sympy ipympl ipykernel playwright
+
+# Switch back to root to install playwright system dependencies
+USER root
+RUN /home/devlh/.venv/bin/playwright install-deps
+
+# Switch back to devlh user
+USER devlh 
+
 
 # Make sure kernel is visible in Jupyter interfaces
 RUN ~/.venv/bin/python -m ipykernel install --user --name=venv --display-name "Python (venv)"
